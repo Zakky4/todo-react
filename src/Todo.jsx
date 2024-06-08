@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./style.css";
+import { InputTodo } from "./components/InputTodo";
 
 export const Todo = () => {
   // 入力したタスク
@@ -11,7 +12,7 @@ export const Todo = () => {
 
   // 入力したTODOを検知
   const onChangeTodoText = (event) => setTodoText(event.target.value);
-  
+
   // TODOを追加
   const onClickAdd = () => {
     if (todoText === "") return;
@@ -25,7 +26,7 @@ export const Todo = () => {
     const newTodos = [...incompleteTodos];
     newTodos.splice(index, 1);
     setIncompleteTodos(newTodos);
-  }
+  };
 
   // TODOを完了
   const onClickComplete = (index) => {
@@ -35,7 +36,7 @@ export const Todo = () => {
     const newCompleteTodos = [...completeTodos, incompleteTodos[index]];
     setIncompleteTodos(newIncompleteTodos);
     setCompleteTodos(newCompleteTodos);
-  }
+  };
 
   // TODOを戻す
   const onClickBack = (index) => {
@@ -45,19 +46,15 @@ export const Todo = () => {
     const newIncompleteTodos = [...incompleteTodos, completeTodos[index]];
     setCompleteTodos(newCompleteTodos);
     setIncompleteTodos(newIncompleteTodos);
-  }
+  };
 
   return (
     <>
-      <div className="input-area">
-        <input
-          id="add-text"
-          placeholder="TODOを入力"
-          value={todoText}
-          onChange={onChangeTodoText}
-        />
-        <button id="add-button" onClick={onClickAdd}>追加</button>
-      </div>
+      <InputTodo
+        todoText={todoText}
+        onChange={onChangeTodoText}
+        onClick={onClickAdd}
+      />
       <div className="incomplete-area">
         <p className="title">未完了のTODO</p>
         <ul id="incomplete-lst">
