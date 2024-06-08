@@ -5,15 +5,9 @@ export const Todo = () => {
   // 入力したタスク
   const [todoText, setTodoText] = useState("");
   // 未完了のTODO
-  const [incompleteTodos, setIncompleteTodos] = useState([
-    "TODOです1",
-    "TODOです2",
-  ]);
+  const [incompleteTodos, setIncompleteTodos] = useState([]);
   // 完了したTODO
-  const [completeTodos, setCompleteTodos] = useState([
-    "TODOでした1",
-    "TODOでした2",
-  ]);
+  const [completeTodos, setCompleteTodos] = useState([]);
 
   // 入力したTODOを検知
   const onChangeTodoText = (event) => setTodoText(event.target.value);
